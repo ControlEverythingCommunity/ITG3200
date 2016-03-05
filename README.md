@@ -2,7 +2,7 @@
 # ITG-3200
 ITG-3200 Gyro Angular Rate Sensor
 
-The ITG-3200 provides 3-Axis Digital Gyrometer using I²C communications.
+The ITG-3200 provides 3-Axis digital gyroscope measurements using I²C communications.
 
 This Device is available from ControlEverything.com [SKU: ITG-3200_I2CS]
 
