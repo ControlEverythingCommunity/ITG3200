@@ -3,6 +3,7 @@
 ITG-3200 Gyro Angular Rate Sensor
 
 The ITG-3200 provides 3-Axis Digital Gyrometer using I²C communications.
+
 This Device is available from ControlEverything.com [SKU: ITG-3200_I2CS]
 
 https://www.controleverything.com/content/Gyro?sku=ITG-3200_I2CS
@@ -37,4 +38,4 @@ Download (or git pull) the code in pi. Run the program
 $> python ITG3200.py
 ```
 
-The code output is the raw values of angular acceleration in 3-Axis.
+The code output is the raw values of angular acceleration in X, Y and Z axis.
