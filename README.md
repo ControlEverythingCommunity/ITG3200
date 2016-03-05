@@ -1,8 +1,8 @@
-[![ITG3200](ITG3200_I2CS.png)](https://www.controleverything.com/content/Gyro?sku=ITG-3200_I2CS)
-# ITG3200
-ITG3200 Gyro Angular Rate Sensor
+[![ITG3200](ITG-3200_I2CS.png)](https://www.controleverything.com/content/Gyro?sku=ITG-3200_I2CS)
+# ITG-3200
+ITG-3200 Gyro Angular Rate Sensor
 
-The ITG3200 provides 3-Axis Digital Gyrometer using I²C communications.
+The ITG-3200 provides 3-Axis Digital Gyrometer using I²C communications.
 This Device is available from ControlEverything.com [SKU: ITG-3200_I2CS]
 
 https://www.controleverything.com/content/Gyro?sku=ITG-3200_I2CS
