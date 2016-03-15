@@ -1,3 +1,5 @@
 lang:java
 lang:python
+lang:arduino
+lang:particle
 sku:ITG-3200_I2CS
