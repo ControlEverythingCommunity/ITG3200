@@ -8,7 +8,7 @@ This Device is available from ControlEverything.com [SKU: ITG-3200_I2CS]
 
 https://www.controleverything.com/content/Gyro?sku=ITG-3200_I2CS
 
-This Sample code can be used with Raspberry pi, Arduino and Particle.
+This Sample code can be used with Raspberry pi, Arduino, Particle and Beaglebone Black.
 
 ## Java
 Download and install pi4j library on Raspberry pi. Steps to install pi4j are provided at:
@@ -62,4 +62,17 @@ Verify and flash the code on your Photon. Code output is shown in logs at dashbo
 
 https://dashboard.particle.io/user/logs
 
+
+## C
+
+Download (or git pull) the code in Beaglebone Black.
+
+Compile the c program.
+```cpp
+$>gcc ITG3200.c -o ITG3200
+```
+Run the c program.
+```cpp
+$>./ITG3200
+```
 #####The code output is the raw values of angular acceleration in X, Y and Z axis.
