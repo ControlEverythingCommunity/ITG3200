@@ -18,12 +18,12 @@ namespace ITG3200
 	// App that reads data over I2C from a ITG3200, 3-Axis MEMS Gyro Angular Rate Sensor
 	public sealed partial class MainPage : Page
 	{
-		private const byte GYRO_I2C_ADDR = 0x68;			// I2C address of the ITG3200
-		private const byte GYRO_REG_DLPF = 0x16;			// DLPF, Full Scale register
-		private const byte GYRO_REG_POWER = 0x3E;			// Power Management register
-		private const byte GYRO_REG_X = 0x1D;				// X Axis High data register
-		private const byte GYRO_REG_Y = 0x1F;				// Y Axis High data register
-		private const byte GYRO_REG_Z = 0x21;				// Z Axis High data register
+		private const byte GYRO_I2C_ADDR = 0x68;	// I2C address of the ITG3200
+		private const byte GYRO_REG_DLPF = 0x16;	// DLPF, Full Scale register
+		private const byte GYRO_REG_POWER = 0x3E;	// Power Management register
+		private const byte GYRO_REG_X = 0x1D;		// X Axis High data register
+		private const byte GYRO_REG_Y = 0x1F;		// Y Axis High data register
+		private const byte GYRO_REG_Z = 0x21;		// Z Axis High data register
 
 		private I2cDevice I2CGyro;
 		private Timer periodicTimer;
@@ -41,7 +41,7 @@ namespace ITG3200
 
 		private async void InitI2CGyro()
 		{
-			string aqs = I2cDevice.GetDeviceSelector();				// Get a selector string that will return all I2C controllers on the system
+			string aqs = I2cDevice.GetDeviceSelector();		// Get a selector string that will return all I2C controllers on the system
 			var dis = await DeviceInformation.FindAllAsync(aqs);	// Find the I2C bus controller device with our selector string
 			if (dis.Count == 0)
 			{
@@ -57,8 +57,8 @@ namespace ITG3200
 				Text_Status.Text = string.Format(
 					"Slave address {0} on I2C Controller {1} is currently in use by " +
 					"another application. Please ensure that no other applications are using I2C.",
-					settings.SlaveAddress,
-					dis[0].Id);
+				settings.SlaveAddress,
+				dis[0].Id);
 				return;
 			}
 
@@ -68,8 +68,8 @@ namespace ITG3200
 				The first byte is the register address we want to write to
 				The second byte is the contents that we want to write to the register
 			*/
-			byte[] WriteBuf_Power = new byte[] { GYRO_REG_POWER, 0x01 };		// 0x01 Power ON's the sensor and clock source is set to PLL with X Gyro reference
-			byte[] WriteBuf_Dlpf = new byte[] { GYRO_REG_DLPF, 0x18 };			// 0x18 sets gyro full-scale range to ±2000°/sec, low pass filter bandwidth to 256 Hz and internal sample rate to 8 Hz
+			byte[] WriteBuf_Power = new byte[] { GYRO_REG_POWER, 0x01 };	// 0x01 Power ON's the sensor and clock source is set to PLL with X Gyro reference
+			byte[] WriteBuf_Dlpf = new byte[] { GYRO_REG_DLPF, 0x18 };	// 0x18 sets gyro full-scale range to ±2000°/sec, low pass filter bandwidth to 256 Hz and internal sample rate to 8 Hz
 
 			// Write the register settings
 			try
@@ -130,7 +130,7 @@ namespace ITG3200
 		private Gyroscope ReadI2CGyro()
 		{
 			byte[] RegAddrBuf = new byte[] { GYRO_REG_X };	// Read data from the register address
-			byte[] ReadBuf = new byte[6];					// We read 6 bytes sequentially to get X-Axis and all 3 two-byte axes registers in one read
+			byte[] ReadBuf = new byte[6];			// We read 6 bytes sequentially to get X-Axis and all 3 two-byte axes registers in one read
 
 			/*
 				Read from the 3-Axis MEMS Gyro Angular Rate Sensor 
@@ -147,12 +147,14 @@ namespace ITG3200
 			{
 				GYRORawX -= 65536;
 			}
+			
 			int GYRORawY = (int)((ReadBuf[2] & 0xFF) * 256);
 			GYRORawY |= (int)(ReadBuf[3] & 0xFF);
 			if (GYRORawY > 32767 )
 			{
 				GYRORawY -= 65536;
 			}
+			
 			int GYRORawZ = (int)((ReadBuf[4] & 0xFF) * 256);
 			GYRORawZ |= (int)(ReadBuf[5] & 0xFF);
 			if (GYRORawZ > 32767 )
@@ -169,4 +171,3 @@ namespace ITG3200
 		}
 	}
 }
-
